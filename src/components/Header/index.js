@@ -48,7 +48,7 @@ function Header() {
             >
               Create Post
             </Nav.Link>
-            {isLogin && (
+            {/* {isLogin && (
               <Nav.Link
                 as={NavLink}
                 className={classes.headingTags}
@@ -56,7 +56,7 @@ function Header() {
               >
                 My Posts
               </Nav.Link>
-            )}
+            )} */}
           </Nav>
           <Nav>
             {!isLogin ? (

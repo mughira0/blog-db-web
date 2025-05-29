@@ -16,7 +16,7 @@ const MyPosts = () => {
 
   const [submitLoading, setSubmitLoading] = useState(false);
   const fetchPosts = async () => {
-    const apiUrl = BaseURL(`blogs/my-blog/${user?.id}`);
+    const apiUrl = BaseURL(`blogs/my-blog/1`);
 
     setSubmitLoading(true);
     try {
