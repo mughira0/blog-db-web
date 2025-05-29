@@ -11,7 +11,14 @@ import { useSelector } from "react-redux";
 import styles from "./CreatePost.module.css";
 import { useEffect } from "react";
 
-const categories = ["art", "science", "technology", "cinema", "design", "food"];
+const categories = [
+  "nutrition",
+  "fitness",
+  "mental-health",
+  "wellness",
+  "diseases",
+  "medical-ews",
+];
 
 const CreatePost = () => {
   const { user } = useContext(UserContext);

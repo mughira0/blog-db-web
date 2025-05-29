@@ -190,27 +190,27 @@ const options = [
     label: "All",
   },
   {
-    value: "art",
-    label: "Art",
+    value: "nutrition",
+    label: "Nutrition",
   },
   {
-    value: "science",
-    label: "Science",
+    value: "fitness",
+    label: "Fitness",
   },
   {
-    value: "technology",
-    label: "Technology",
+    value: "mental-health",
+    label: "Mental Health",
   },
   {
-    value: "cinema",
-    label: "Cinema",
+    value: "wellness",
+    label: "Wellness",
   },
   {
-    value: "design",
-    label: "Design",
+    value: "diseases",
+    label: "Diseases",
   },
   {
-    value: "food",
-    label: "Food",
+    value: "medical-news",
+    label: "Medical News",
   },
 ];
