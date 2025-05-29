@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import PostDetail from "./pages/PostDetail";
 import Posts from "./pages/Posts";
 import Register from "./pages/Register";
+import MyPosts from "./pages/MyPosts";
 function App() {
   return (
     <BrowserRouter>
@@ -23,7 +24,10 @@ function App() {
           element={<BeforeLoginRoute component={Register} />}
           path="/register"
         />
-
+        <Route
+          element={<ProtectedRoute component={MyPosts} />}
+          path="/my-posts"
+        />
         <Route
           element={<ProtectedRoute component={CreatePost} />}
           path="/create-post"

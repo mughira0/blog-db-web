@@ -6,17 +6,17 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { useNavigate } from "react-router-dom";
 import { BaseURL, mediaUrl } from "../../assets/helper/Urls";
 import UserContext from "../../context/UserContext";
-import NoData from "../NoData";
 import styles from "./masonry.module.css";
+import NoData from "../../components/NoData";
 
-const BLogsMasonrySection = () => {
+const MyPosts = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   const { user } = useContext(UserContext);
 
   const [submitLoading, setSubmitLoading] = useState(false);
-  const fetchPosts = async (cat = selectedCategory) => {
-    const apiUrl = BaseURL(`blogs/my-blogs/${user?.id}`);
+  const fetchPosts = async () => {
+    const apiUrl = BaseURL(`blogs/my-blog/${user?.id}`);
 
     setSubmitLoading(true);
     try {
@@ -31,8 +31,8 @@ const BLogsMasonrySection = () => {
     setSubmitLoading(false);
   };
   useEffect(() => {
-    fetchPosts();
-  }, []);
+    if (user) fetchPosts();
+  }, [user]);
   return (
     <div className={styles.wrapper}>
       {/* Header Section */}
@@ -120,7 +120,7 @@ const BLogsMasonrySection = () => {
   );
 };
 
-export default BLogsMasonrySection;
+export default MyPosts;
 const options = [
   {
     value: "all",
