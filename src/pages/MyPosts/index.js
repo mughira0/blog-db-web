@@ -8,19 +8,21 @@ import { BaseURL, mediaUrl } from "../../assets/helper/Urls";
 import UserContext from "../../context/UserContext";
 import styles from "./masonry.module.css";
 import NoData from "../../components/NoData";
+import { useSelector } from "react-redux";
 
 const MyPosts = () => {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
-  const { user } = useContext(UserContext);
-
+  const { user } = useSelector((state) => state.authReducer);
   const [submitLoading, setSubmitLoading] = useState(false);
   const fetchPosts = async () => {
-    const apiUrl = BaseURL(`blogs/my-blog/1`);
-
+    if (!user) return;
+    const apiUrl = BaseURL(`blogs/my-blog/${user?.id}`);
+    console.log(apiUrl);
+    const headers = { Authorization: `Bearer ${user?.token}` };
     setSubmitLoading(true);
     try {
-      const response = await axios.get(apiUrl);
+      const response = await axios.get(apiUrl, { headers });
       if (response) {
         setPosts(response?.data);
       }
@@ -31,7 +33,7 @@ const MyPosts = () => {
     setSubmitLoading(false);
   };
   useEffect(() => {
-    if (user) fetchPosts();
+    fetchPosts();
   }, [user]);
   return (
     <div className={styles.wrapper}>
@@ -79,7 +81,7 @@ const MyPosts = () => {
                     alt={`Blog ${i}`}
                     className={styles.cardImage}
                   />
-                  {user?.user_id === item?.user_id && (
+                  {user?.id === item?.user_id && (
                     <div
                       className={styles.bookmarkWrapper1}
                       onClick={() => navigate(`/edit-post/${item?.id}`)}

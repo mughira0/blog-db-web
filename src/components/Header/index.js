@@ -30,7 +30,8 @@ function Header() {
     <Navbar expand="lg" className="bg-body-tertiary navbarContainer">
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <img src={logo} className={classes.logo} alt="" />
+          <h7 className={classes.logo}>BLOGS MANIA</h7>
+          {/* <img src={logo} className={classes.logo} alt="" /> */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse
@@ -48,15 +49,15 @@ function Header() {
             >
               Create Post
             </Nav.Link>
-            {/* {isLogin && (
+            {isLogin && (
               <Nav.Link
                 as={NavLink}
                 className={classes.headingTags}
-                to="/my-post"
+                to="/posts"
               >
                 My Posts
               </Nav.Link>
-            )} */}
+            )}
           </Nav>
           <Nav>
             {!isLogin ? (

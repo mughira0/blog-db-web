@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { BaseURL, mediaUrl } from "../../assets/helper/Urls";
 import classes from "./PostDetail.module.css";
+import { toast } from "react-toastify";
 
 const PostDetail = () => {
   const { access_token, user } = useSelector((state) => state.authReducer);
@@ -27,18 +28,18 @@ const PostDetail = () => {
   };
   console.log(relatedPosts);
   const handleDelete = async () => {
-    const apiUrl = BaseURL(`/blogs/${id}`);
-    const response = await axios.delete(
-      apiUrl,
-      {},
-      { headers: { Authorization: `Bearer ${access_token}` } }
-    );
-    console.log(response);
-    // navigate("/posts");
+    const apiUrl = BaseURL(`blogs/delete/${id}`);
+    const response = await axios.delete(apiUrl, {
+      headers: { Authorization: `Bearer ${access_token}` },
+    });
+    toast.success("Post deleted successfully");
+    navigate("/");
   };
+
   useEffect(() => {
     fetchPosts();
   }, [id]);
+  console.log(user);
   return (
     <>
       <Container>
@@ -63,23 +64,22 @@ const PostDetail = () => {
                         </p>
                       </div>
                     </div>
-                    {user?.id === postData?.user?.id && (
-                      <div className={classes.updateBtns}>
-                        <Link
-                          className={classes.editBtn}
-                          to={"/create-post?edit=2"}
-                          state={postData}
-                        >
-                          <BiEditAlt />
-                        </Link>
-                        <div
-                          className={`${classes.editBtn} ${classes.deletBtn}`}
-                          onClick={handleDelete}
-                        >
-                          <AiFillDelete />
-                        </div>
+                    {/* {user?.id == postData?.user?.id && ( */}
+                    <div className={classes.updateBtns}>
+                      <Link
+                        className={classes.editBtn}
+                        to={"/edit-post/" + postData?.id}
+                      >
+                        <BiEditAlt />
+                      </Link>
+                      <div
+                        className={`${classes.editBtn} ${classes.deletBtn}`}
+                        onClick={handleDelete}
+                      >
+                        <AiFillDelete />
                       </div>
-                    )}
+                    </div>
+                    {/* )} */}
                   </div>
                   <div className={classes.postDescription}>
                     <h2>{postData?.title}</h2>

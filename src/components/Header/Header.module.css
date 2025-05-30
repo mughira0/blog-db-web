@@ -1,8 +1,8 @@
-.logo{
-    height: 50px;
-    width: 80px;
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
-.headingTags{
-    font-weight: 600;
+.headingTags {
+  font-weight: 600;
 }

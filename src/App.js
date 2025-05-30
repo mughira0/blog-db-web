@@ -24,10 +24,7 @@ function App() {
           element={<BeforeLoginRoute component={Register} />}
           path="/register"
         />
-        {/* <Route
-          element={<ProtectedRoute component={MyPosts} />}
-          path="/my-posts"
-        /> */}
+        <Route element={<ProtectedRoute component={MyPosts} />} path="/posts" />
         <Route
           element={<ProtectedRoute component={CreatePost} />}
           path="/create-post"

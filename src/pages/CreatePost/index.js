@@ -70,7 +70,7 @@ const CreatePost = () => {
         success: isUpdate ? "Post updated!" : "Post published!",
         error: "Something went wrong. Try again later.",
       });
-      navigate("/posts");
+      navigate("/");
     } catch (err) {
       console.error("Post error:", err);
     } finally {

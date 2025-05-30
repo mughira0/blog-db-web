@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component }) => {
   const { isLogin } = useSelector((state) => state.authReducer);
+
   return isLogin ? <Component /> : <Navigate to="/login" />;
 };
 
